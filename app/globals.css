@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased selection:bg-brand-500 selection:text-white min-h-screen;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Cards & Containers */
+.card {
+  @apply bg-white rounded-2xl border border-slate-200/80 shadow-sm transition-all duration-200;
+}
+.card-hover {
+  @apply hover:shadow-soft hover:border-slate-300 transition-all duration-200;
+}
+.card-gradient-subtle {
+  @apply bg-gradient-to-br from-white via-slate-50/50 to-indigo-50/20 border border-slate-200/80 rounded-2xl shadow-sm;
+}
+.glass-panel {
+  @apply bg-white/80 backdrop-blur-md border border-white/40 shadow-soft;
+}
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
+}
+.btn-primary {
+  @apply bg-brand-600 text-white hover:bg-brand-700 hover:shadow-glow-brand shadow-sm active:bg-brand-800;
+}
+.btn-gradient {
+  @apply bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-600 text-white hover:opacity-95 shadow-md shadow-brand-500/20 hover:shadow-glow-brand;
+}
+.btn-secondary {
+  @apply bg-slate-100 text-slate-800 hover:bg-slate-200/80 active:bg-slate-300;
+}
+.btn-danger {
+  @apply bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200/80 active:bg-rose-200;
+}
+.btn-success {
+  @apply bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200/80 active:bg-emerald-200;
+}
+.btn-outline {
+  @apply border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-sm;
+}
+
+/* Inputs & Form Elements */
+.input {
+  @apply w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 transition-all duration-150 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500;
+}
+.label {
+  @apply block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5;
+}
+
+/* Status Badges */
+.badge {
+  @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold tracking-tight transition-colors;
+}
+.badge-indigo {
+  @apply bg-brand-50 text-brand-700 border border-brand-200/60;
+}
+.badge-emerald {
+  @apply bg-emerald-50 text-emerald-700 border border-emerald-200/60;
+}
+.badge-amber {
+  @apply bg-amber-50 text-amber-700 border border-amber-200/60;
+}
+.badge-rose {
+  @apply bg-rose-50 text-rose-700 border border-rose-200/60;
+}
+.badge-slate {
+  @apply bg-slate-100 text-slate-700 border border-slate-200;
+}
+
+/* Pulse Dot */
+.pulse-dot {
+  @apply relative flex h-2 w-2;
+}
+.pulse-dot-ping {
+  @apply animate-ping absolute inline-flex h-full w-full rounded-full opacity-75;
+}
+.pulse-dot-core {
+  @apply relative inline-flex rounded-full h-2 w-2;
+}
+
+/* Modern Tables */
+.table-container {
+  @apply overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm;
+}
+.table-modern {
+  @apply min-w-full divide-y divide-slate-100 text-left text-sm text-slate-700;
+}
+.table-modern thead {
+  @apply bg-slate-50/80 text-xs font-semibold uppercase tracking-wider text-slate-500;
+}
+.table-modern th {
+  @apply px-4 py-3.5 font-semibold;
+}
+.table-modern td {
+  @apply px-4 py-3.5 whitespace-nowrap;
+}
+.table-modern tbody tr {
+  @apply transition-colors hover:bg-slate-50/70;
+}
+
+/* ─── Premium Impact Utilities ─────────────────────────────── */
+
+/* Gradient text */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-500 via-indigo-500 to-violet-500;
+}
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-500;
+}
+
+/* Animated metric bar */
+@keyframes grow-width {
+  from { width: 0%; }
+  to   { width: var(--target-width, 100%); }
+}
+.metric-bar {
+  @apply h-2 rounded-full;
+  animation: grow-width 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Shimmer skeleton */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f0f4f8 25%, #e2e8f0 50%, #f0f4f8 75%);
+  background-size: 200% auto;
+  animation: shimmer 1.5s linear infinite;
+}
+
+/* Slide-up entrance */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+.animate-slide-up-delay-1 { animation: slide-up 0.5s 0.1s ease-out both; }
+.animate-slide-up-delay-2 { animation: slide-up 0.5s 0.2s ease-out both; }
+.animate-slide-up-delay-3 { animation: slide-up 0.5s 0.3s ease-out both; }
+.animate-slide-up-delay-4 { animation: slide-up 0.5s 0.4s ease-out both; }
+
+/* Glow ring highlight */
+.glow-ring-brand {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2), 0 0 20px rgba(99, 102, 241, 0.12);
+}
+.glow-ring-emerald {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2), 0 0 20px rgba(16, 185, 129, 0.12);
+}
+.glow-ring-amber {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2), 0 0 20px rgba(245, 158, 11, 0.12);
+}
+.glow-ring-rose {
+  box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.2), 0 0 20px rgba(244, 63, 94, 0.12);
+}
+
+/* Hero card gradients */
+.hero-dark {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #0f172a 100%);
+}
+.hero-card {
+  @apply relative overflow-hidden rounded-2xl border border-white/10 text-white;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1a0533 100%);
+}
+
+/* Number ticker (big stat display) */
+.stat-number {
+  @apply text-4xl font-black tabular-nums tracking-tight;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Drag-over kanban highlight */
+.kanban-drag-over {
+  @apply ring-2 ring-brand-400 bg-brand-50/50;
+}
+
+/* Health-meter ring (SVG-less CSS circle) */
+.health-ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* Ticker animation for live feed */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  display: flex;
+  animation: ticker 28s linear infinite;
+  white-space: nowrap;
+}

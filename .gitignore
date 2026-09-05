@@ -1,0 +1,4 @@
+node_modules
+.next
+data/dealflow360.json
+.DS_Store
