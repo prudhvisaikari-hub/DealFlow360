@@ -4,7 +4,8 @@ import Link from "next/link";
 import { getCurrentUser } from "@/lib/session";
 import { logoutAction, resetDemoAction } from "@/lib/actions";
 import dynamic from "next/dynamic";
-const MenuOverlay = dynamic(() => import("@/components/MenuOverlay"), { ssr: false });
+const BurgerMenu = dynamic(() => import("@/components/BurgerMenu"), { ssr: false });
+
 
 export default function WorkspaceLayout({ children }: { children: React.ReactNode }) {
   const user = getCurrentUser();
@@ -42,7 +43,7 @@ export default function WorkspaceLayout({ children }: { children: React.ReactNod
                 <span className="text-[10px] text-slate-400 font-medium">Enterprise CPQ</span>
               </div>
             </Link>
-            <MenuOverlay />
+            <BurgerMenu />
 
           </div>
 
