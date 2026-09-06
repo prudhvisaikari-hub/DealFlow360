@@ -1,6 +1,6 @@
 # DealFlow360
 
-[GitHub Repository](https://github.com/prudhvisaikari-hub/DealFlow360)
+
 
 An intelligent, self-governing sales operations platform — quotation to cash,
 end to end. Built with **Next.js 14 (App Router) + TypeScript + Tailwind CSS**,
