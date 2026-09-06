@@ -3,9 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getCurrentUser } from "@/lib/session";
 import { logoutAction, resetDemoAction } from "@/lib/actions";
-import dynamic from "next/dynamic";
-const BurgerMenu = dynamic(() => import("@/components/BurgerMenu"), { ssr: false });
-
+import BurgerMenu from "@/components/BurgerMenu";
 
 export default function WorkspaceLayout({ children }: { children: React.ReactNode }) {
   const user = getCurrentUser();

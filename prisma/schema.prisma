@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
+  name       String?
+  createdAt  DateTime   @default(now())
+  quotations Quotation[]
+  approvalsGiven Approval[] @relation("Reviewer")
+}
+
+model Quotation {
+  id          Int        @id @default(autoincrement())
+  amount      Float
+  description String?
+  userId      Int
+  user        User       @relation(fields: [userId], references: [id])
+  approvals   Approval[] @relation("QuotationApprovals")
+  billings    Billing[] @relation("QuotationBillings")
+  createdAt   DateTime   @default(now())
+}
+
+model Approval {
+  id          Int      @id @default(autoincrement())
+  quotationId Int
+  status      String   // e.g., "pending", "approved", "rejected"
+  reviewerId  Int
+  reviewer    User     @relation("Reviewer", fields: [reviewerId], references: [id])
+  // added opposite relation in User
+  createdAt   DateTime @default(now())
+
+  // opposite relation for quotation
+  quotation   Quotation @relation("QuotationApprovals", fields: [quotationId], references: [id])
+}
+
+model Billing {
+  id          Int      @id @default(autoincrement())
+  quotationId Int
+  amountPaid  Float
+  paymentDate DateTime @default(now())
+  quotation   Quotation @relation("QuotationBillings", fields: [quotationId], references: [id])
+}
